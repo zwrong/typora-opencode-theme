@@ -1,10 +1,10 @@
 # OpenCode Theme for Typora
 
-A dark theme for [Typora](https://typora.io) inspired by [OpenCode](https://github.com/nicholasgriffintn/opencode) with code syntax highlighting from [GitHub Night](https://github.com/kinoute/typora-github-night-theme).
+A dark theme for [Typora](https://typora.io) inspired by [OpenCode](https://github.com/anomalyco/opencode) with code syntax highlighting from [GitHub Night](https://github.com/kinoute/typora-github-night-theme).
 
 ## Preview
 
-> Add screenshots to the `screenshots/` folder and update this section.
+![OpenCode Theme Showcase](screenshots/ShowCase.png)
 
 ## Install
 
@@ -44,9 +44,40 @@ A dark theme for [Typora](https://typora.io) inspired by [OpenCode](https://gith
 | Type | Orange | `#ffb86c` |
 | Function def | Orange | `#ffa657` |
 
+### Code Example
+
+```typescript
+import { createServer } from 'http'
+
+interface Config {
+  port: number
+  host: string
+  debug: boolean
+}
+
+// Start the server with the given config
+async function startServer(config: Config): Promise<void> {
+  const { port, host, debug } = config
+
+  const server = createServer((req, res) => {
+    const message = JSON.stringify({ status: 'ok', timestamp: Date.now() })
+    res.writeHead(200, { 'Content-Type': 'application/json' })
+    res.end(message)
+  })
+
+  server.listen(port, host, () => {
+    if (debug) {
+      console.log(`Server running at http://${host}:${port}`)
+    }
+  })
+}
+
+startServer({ port: 3000, host: 'localhost', debug: true })
+```
+
 ## Credits
 
-- Markdown styling based on [OpenCode](https://github.com/nicholasgriffintn/opencode)
+- Markdown styling based on [OpenCode](https://github.com/anomalyco/opencode)
 - Code syntax highlighting based on [GitHub Night for Typora](https://github.com/kinoute/typora-github-night-theme)
 - Font: SF Mono (Apple)
 
